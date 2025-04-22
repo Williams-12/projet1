@@ -1,14 +1,66 @@
-.nav-big-link {
-  font-size: 1.3rem;
-  font-weight: 600;
-  transition: all 0.3s ease-in-out;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+.main-navbar {
+  background: #ffffff;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.nav-big-link:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-  color: #fff !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.main-navbar .navbar-brand {
+  color: #1e1e1e;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
 }
+
+.main-navbar .navbar-brand:hover {
+  color: #0d6efd;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #333;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0d6efd;
+}
+
+.nav-animated::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #0d6efd;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-animated:hover::after {
+  width: 100%;
+}
+
+.nav-logout-btn {
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-logout-btn:hover {
+  background-color: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+}
+
+.logo-img {
+  width: 1000px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+}
+

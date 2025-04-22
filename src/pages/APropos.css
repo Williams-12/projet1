@@ -1,0 +1,44 @@
+.apropos-page {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .hero-section {
+    height: 60vh;
+    background: url('https://i.pinimg.com/736x/16/d3/4b/16d34b8a5c2d6b86012dfb0ea3063196.jpg') center/cover no-repeat;
+    position: relative;
+  }
+  
+  .hero-section .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .hero-section .content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .about-details h2 {
+    color: #0d6efd;
+  }
+  
+  .about-details ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .about-details ul li::before {
+    content: '✔';
+    margin-right: 10px;
+    color: #0d6efd;
+  }
+  
+  .about-details p, .about-details li {
+    font-size: 1.1rem;
+  }
+  

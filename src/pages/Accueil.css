@@ -25,3 +25,18 @@
   align-items: center;
   padding: 2rem;
 } */
+.resource-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+}
+
+.resource-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ressources-section h4 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #0d6efd;
+}
