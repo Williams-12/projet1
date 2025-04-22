@@ -1,4 +1,3 @@
-// src/pages/Login.jsx
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +6,7 @@ import 'aos/dist/aos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login() {
-  const [email, setEmail] = useState('');
+  const [identifiant, setIdentifiant] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
@@ -19,13 +18,16 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post('https://studyzone-4gbd.onrender.com/api/auth/login', {
-        email,
+        identifiant,
         password,
       });
       localStorage.setItem('token', res.data.token);
-      navigate('/profile');
+      localStorage.setItem('user', JSON.stringify(res.data.user));
+      navigate('/profil');
     } catch (err) {
-      alert('Email ou mot de passe incorrect.');
+      const message = err?.response?.data?.message || 'Erreur lors de la connexion.';
+      alert(message);
+      console.error(err);
     }
   };
 
@@ -41,14 +43,14 @@ function Login() {
             <h2 className="text-center mb-4 fw-bold">Connexion</h2>
             <form onSubmit={handleLogin}>
               <div className="mb-3">
-                <label className="form-label">Adresse Email</label>
+                <label className="form-label">Email ou Nom</label>
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={identifiant}
+                  onChange={(e) => setIdentifiant(e.target.value)}
                   required
-                  placeholder="exemple@email.com"
+                  placeholder="exemple@email.com ou votre nom"
                 />
               </div>
               <div className="mb-3">

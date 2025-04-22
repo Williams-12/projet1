@@ -6,16 +6,15 @@ function MainHeader() {
       <div style={styles.logoContainer}>
         <Link to="/" style={styles.logoLink}>
           <img
-            src="/src/assets/logoo.png"
+            src="/src/assets/logo.png"
             alt="Logo"
             style={styles.logo}
           />
-          <span style={styles.brandText}>StudyZone</span>
         </Link>
       </div>
 
       <ul style={styles.navLinks}>
-        {["ACCUEIL", "BIBLIOTHÈQUE", "PROFIL", "CONTACT", "À PROPOS"].map((text, index) => (
+        {["ACCUEIL", "BIBLIOTHEQUE", "PROFIL", "CONTACT", "APropos"].map((text, index) => (
           <li key={index}>
             <Link to={`/${text.toLowerCase()}`} style={styles.link} onMouseOver={(e) => hoverEffect(e)} onMouseOut={(e) => resetEffect(e)}>
               {text}
@@ -62,19 +61,22 @@ const styles = {
     textDecoration: 'none',
   },
   logo: {
-    width: '60px',
-    height: '60px',
+    width: '1000px',
+    height: '50px',
+    marginLeft: '-400px',
+    marginRight: '-150px',
     objectFit: 'contain',
     borderRadius: '8px',
     transition: 'transform 0.3s ease',
+  
   },
-  brandText: {
-    marginLeft: '10px',
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    color: '#0d6efd',
-    letterSpacing: '1px',
-  },
+  // brandText: {
+  //   marginLeft: '10px',
+  //   fontSize: '1.5rem',
+  //   fontWeight: 'bold',
+  //   color: '#0d6efd',
+  //   letterSpacing: '1px',
+  // },
   navLinks: {
     listStyle: 'none',
     display: 'flex',
@@ -86,7 +88,7 @@ const styles = {
   link: {
     textDecoration: 'none',
     fontWeight: 600,
-    color: '#333',
+    color: '#facd05',
     padding: '8px 10px',
     textTransform: 'uppercase',
     position: 'relative',

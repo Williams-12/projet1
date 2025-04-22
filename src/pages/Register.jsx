@@ -20,14 +20,16 @@ function Register() {
     e.preventDefault();
     try {
       await axios.post('https://studyzone-4gbd.onrender.com/api/auth/register', {
-        identifiant,
+        name,
+        email,
         password,
         role: 'eleve',
       });
       alert('Inscription réussie !');
       navigate('/login');
     } catch (err) {
-      alert("Erreur lors de l’inscription.");
+      const message = err?.response?.data?.message || "Erreur lors de l’inscription.";
+      alert(message);
       console.error(err);
     }
   };
@@ -80,7 +82,7 @@ function Register() {
                 S’inscrire
               </button>
               <div className="text-center mt-3">
-                 Déjà inscrit ?<a href="/login" className="text-decoration-none">Se connecter</a>
+                Déjà inscrit ? <a href="/login" className="text-decoration-none">Se connecter</a>
               </div>
             </form>
           </div>

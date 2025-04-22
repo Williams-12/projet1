@@ -5,6 +5,7 @@ import './Home.css';
 function Home() {
   return (
     <>
+    <Navbar />
       <div
         className="home-hero d-flex align-items-center justify-content-center text-white text-center"
         style={{

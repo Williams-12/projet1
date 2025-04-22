@@ -28,7 +28,7 @@ function APropos() {
             <h2 className="fw-bold mb-3">Notre mission</h2>
             <p>
               Chez <strong>StudyZone</strong>, nous croyons que l’éducation de qualité doit être accessible à tous.
-              Nous proposons des ressources fiables, engageantes et structurées pour accompagner les étudiants dans chaque étape de leur parcours.
+              Nous proposons des ressources fiables, engageantes et structurées pour accompagner les éleves et étudiants dans chaque étape de leur parcours.
             </p>
           </div>
         </div>

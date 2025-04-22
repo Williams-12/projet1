@@ -20,7 +20,7 @@ function Footer() {
               <li><a href="/accueil" className="footer-link">Accueil</a></li>
               <li><a href="/bibliotheque" className="footer-link">Bibliothèque</a></li>
               <li><a href="/contact" className="footer-link">Contact</a></li>
-              <li><a href="/apropos" className="footer-link">À propos</a></li> {/* ✅ Lien ajouté ici */}
+              <li><a href="/apropos" className="footer-link">À propos</a></li>
               <li><a href="/politique" className="footer-link">Politique de confidentialité</a></li>
             </ul>
           </div>
@@ -36,6 +36,20 @@ function Footer() {
             </div>
           </div>
 
+          {/* Colonne 4 - Application Mobile */}
+          <div className="col-md-3 mb-4">
+            <h5 className="text-light">Téléchargez l'app</h5>
+            <p className="text-muted mb-2">Disponible bientôt sur mobile.</p>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img 
+                src="https://i.pinimg.com/474x/2d/b1/b0/2db1b0c38a22cad84c474d276eabc30f.jpg" 
+                alt="Disponible sur Google Play"
+                style={{ height: '45px' }}
+                className="hover-zoom"
+              />
+            </a>
+          </div>
+
         </div>
 
         <hr className="border-secondary" />
@@ -44,6 +58,26 @@ function Footer() {
           &copy; {new Date().getFullYear()} StudyZone. Tous droits réservés.
         </div>
       </div>
+
+      {/* ==== STYLE INTERNE SUPPLÉMENTAIRE ==== */}
+      <style>{`
+        .footer-link {
+          color: #bbb;
+          text-decoration: none;
+        }
+        .footer-link:hover {
+          color: #fff;
+        }
+        .social-icon {
+          font-size: 1.2rem;
+        }
+        .hover-zoom {
+          transition: transform 0.3s ease;
+        }
+        .hover-zoom:hover {
+          transform: scale(1.05);
+        }
+      `}</style>
     </footer>
   );
 }
