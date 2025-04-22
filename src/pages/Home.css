@@ -1,0 +1,16 @@
+/* src/pages/Home.css */
+
+.home-hero {
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1584697964354-e85d97a6ab9b');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: brightness(0.6);
+  }
+  
+  .home-hero h1,
+  .home-hero p {
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.7);
+  }
+  

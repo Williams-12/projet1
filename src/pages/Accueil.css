@@ -1,0 +1,27 @@
+/* .accueil-fullpage {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.carousel-img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.accueil-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+} */

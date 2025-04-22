@@ -1,0 +1,14 @@
+.nav-big-link {
+  font-size: 1.3rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.nav-big-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  color: #fff !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
