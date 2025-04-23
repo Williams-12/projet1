@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,10 +9,18 @@ function Login() {
   const [identifiant, setIdentifiant] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
-  }, []);
+
+    const isLoggedIn = localStorage.getItem('user');
+    
+    // ✅ Ne redirige pas automatiquement si on vient déjà de /login
+    if (isLoggedIn && location.pathname === '/login') {
+      navigate('/accueil');
+    }
+  }, [navigate, location.pathname]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -23,7 +31,9 @@ function Login() {
       });
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
-      navigate('/profil');
+
+      const redirectTo = location.state?.from?.pathname || '/profil';
+      navigate(redirectTo);
     } catch (err) {
       const message = err?.response?.data?.message || 'Erreur lors de la connexion.';
       alert(message);

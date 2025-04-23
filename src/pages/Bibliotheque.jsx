@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Bibliotheque.css';
 
 function Bibliotheque() {
@@ -20,7 +21,7 @@ function Bibliotheque() {
     ],
   };
 
-  const renderSection = (titre, data) => (
+  const renderSection = (titre, data, type) => (
     <div className="ressource-section mb-5">
       <h3 className="section-title">{titre}</h3>
       <div className="row g-4">
@@ -37,7 +38,7 @@ function Bibliotheque() {
         ))}
       </div>
       <div className="text-end mt-4">
-        <button className="btn btn-primary px-4 rounded-pill">Voir plus</button>
+        <Link to={`/ressources/${type}`} className="btn btn-primary px-4 rounded-pill">Voir plus</Link>
       </div>
     </div>
   );
@@ -48,9 +49,9 @@ function Bibliotheque() {
         <h1 className="fw-bold display-5 text-gradient">Explorez Nos Ressources</h1>
         <p className="lead text-muted">Découvrez les épreuves, exercices et cours par matière</p>
       </div>
-      {renderSection("Épreuves", ressources.epreuves)}
-      {renderSection("Exercices", ressources.exercices)}
-      {renderSection("Cours", ressources.cours)}
+      {renderSection("Épreuves", ressources.epreuves, "epreuves")}
+      {renderSection("Exercices", ressources.exercices, "exercices")}
+      {renderSection("Cours", ressources.cours, "cours")}
     </div>
   );
 }

@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import Navbar from './Navbar';
 import MainHeader from './MainHeader';
 import Footer from './Footer';
 
 function Layout() {
+  const location = useLocation();
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
   const [showColors, setShowColors] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const isHomePage = location.pathname === '/';
 
   const colors = ['#047891', '#780064', '#00781e', '#ff6f00', '#4a00e0', '#0099cc'];
-
   const toggleColors = () => setShowColors(!showColors);
+  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-theme', isDarkMode);
+  }, [isDarkMode]);
 
   return (
-    <div className="d-flex flex-column min-vh-100 position-relative" style={{ backgroundColor, transition: 'background-color 0.5s ease' }}>
-      <MainHeader />
+    <div
+      className="d-flex flex-column min-vh-100 position-relative"
+      style={{
+        backgroundColor: isDarkMode ? '#121212' : backgroundColor,
+        color: isDarkMode ? '#f1f1f1' : '#000',
+        transition: 'background-color 0.5s ease, color 0.5s ease',
+      }}
+    >
+      {isHomePage ? <Navbar /> : <MainHeader />}
+
       <main className="flex-grow-1">
         <Outlet />
       </main>
       <Footer />
 
-      {/* Bouton de paramètres flottant */}
+      {/* 🎨 Bouton flottant couleurs */}
       <div
         onClick={toggleColors}
         style={{
@@ -36,14 +53,13 @@ function Layout() {
           cursor: 'pointer',
           animation: 'bounce 2s infinite',
           zIndex: 2000,
-          border: '2px solid'
+          border: '2px solid',
         }}
         title="Changer la couleur de fond"
       >
-        <span style={{ color: '#fa1105', fontSize: '24px' }}>⚙️</span>
+        ⚙️
       </div>
 
-      {/* Cercles de couleurs */}
       {showColors && (
         <div
           style={{
@@ -78,7 +94,30 @@ function Layout() {
         </div>
       )}
 
-      {/* Animation CSS */}
+      {/* 🌙 Thème sombre/clair */}
+      <div
+        onClick={toggleDarkMode}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          left: '20px',
+          width: '60px',
+          height: '60px',
+          borderRadius: '50%',
+          backgroundColor: isDarkMode ? '#222' : '#eee',
+          color: isDarkMode ? '#fff' : '#333',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          cursor: 'pointer',
+          boxShadow: '0 0 10px rgba(0,0,0,0.3)',
+          zIndex: 2000,
+        }}
+        title="Changer le thème sombre / clair"
+      >
+        {isDarkMode ? '☀️' : '🌙'}
+      </div>
+
       <style>
         {`
           @keyframes bounce {
@@ -88,6 +127,11 @@ function Layout() {
             50% {
               transform: translateY(-10px);
             }
+          }
+
+          .dark-theme {
+            background-color: #121212 !important;
+            color: #f1f1f1 !important;
           }
         `}
       </style>

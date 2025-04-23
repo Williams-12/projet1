@@ -14,7 +14,7 @@ function MainHeader() {
       </div>
 
       <ul style={styles.navLinks}>
-        {["ACCUEIL", "BIBLIOTHEQUE", "PROFIL", "CONTACT", "APropos"].map((text, index) => (
+        {["ACCUEIL", "BIBLIOTHEQUE", "PROFIL","APropos", "CONTACT"].map((text, index) => (
           <li key={index}>
             <Link to={`/${text.toLowerCase()}`} style={styles.link} onMouseOver={(e) => hoverEffect(e)} onMouseOut={(e) => resetEffect(e)}>
               {text}
@@ -26,7 +26,7 @@ function MainHeader() {
             style={styles.logoutBtn}
             onClick={() => {
               localStorage.removeItem('token');
-              window.location.href = '/login';
+              window.location.href = '/';
             }}
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = "#dc3545"}
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = "transparent"}
