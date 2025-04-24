@@ -10,23 +10,19 @@ import Register from './pages/Register';
 import APropos from './pages/APropos';
 import Ressources from './pages/Ressources';
 import NotFound from './pages/NotFound';
-import PrivateRoute from './components/PrivateRoute'; // ⬅️ Ajout
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Home />} /> {/* ✅ Affichage direct de Accueil à / */}
+          <Route path="accueil" element={<Accueil />} /> {/* ✅ Home déplacé vers /auth */}
           <Route path="contact" element={<Contact />} />
           <Route path="apropos" element={<APropos />} />
 
           {/* 🔒 Routes protégées */}
-          <Route path="accueil" element={
-            <PrivateRoute>
-              <Accueil />
-            </PrivateRoute>
-          } />
           <Route path="bibliotheque" element={
             <PrivateRoute>
               <Bibliotheque />
@@ -46,7 +42,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
 
-        {/* Auth routes */}
+        {/* Auth routes (inchangées) */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

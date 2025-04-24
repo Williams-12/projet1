@@ -8,27 +8,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Login() {
   const [identifiant, setIdentifiant] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
+  }, []);
 
-    const isLoggedIn = localStorage.getItem('user');
-    
-    // ✅ Ne redirige pas automatiquement si on vient déjà de /login
-    if (isLoggedIn && location.pathname === '/login') {
-      navigate('/accueil');
+  useEffect(() => {
+    if (errorMessage) {
+      const timer = setTimeout(() => setErrorMessage(''), 3000);
+      return () => clearTimeout(timer);
     }
-  }, [navigate, location.pathname]);
+  }, [errorMessage]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await axios.post('https://studyzone-4gbd.onrender.com/api/auth/login', {
         identifiant,
         password,
       });
+
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
 
@@ -36,51 +40,73 @@ function Login() {
       navigate(redirectTo);
     } catch (err) {
       const message = err?.response?.data?.message || 'Erreur lors de la connexion.';
-      alert(message);
+      setErrorMessage(message);
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="login-page">
-      <div className="overlay">
-        <div className="container d-flex align-items-center justify-content-center min-vh-100">
-          <div
-            className="card p-4 shadow-lg"
-            style={{ width: '100%', maxWidth: '400px' }}
-            data-aos="zoom-in"
-          >
-            <h2 className="text-center mb-4 fw-bold">Connexion</h2>
-            <form onSubmit={handleLogin}>
-              <div className="mb-3">
-                <label className="form-label">Email ou Nom</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={identifiant}
-                  onChange={(e) => setIdentifiant(e.target.value)}
-                  required
-                  placeholder="exemple@email.com ou votre nom"
-                />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Mot de passe</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  placeholder="********"
-                />
-              </div>
-              <button type="submit" className="btn btn-primary w-100 mt-3">
-                Se connecter
-              </button>
-              <div className="text-center mt-3">
-                <a href="/register" className="text-decoration-none">Créer un compte</a>
-              </div>
-            </form>
+    <>
+      {/* ✅ Toast d'erreur */}
+      {errorMessage && (
+        <div className="toast-container position-fixed top-0 end-0 p-3" style={{ zIndex: 9999 }}>
+          <div className="toast show align-items-center text-bg-danger border-0">
+            <div className="d-flex">
+              <div className="toast-body">{errorMessage}</div>
+              <button
+                type="button"
+                className="btn-close btn-close-white me-2 m-auto"
+                onClick={() => setErrorMessage('')}
+              ></button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="login-page">
+        <div className="overlay">
+          <div className="container d-flex align-items-center justify-content-center min-vh-100">
+            <div
+              className="card p-4 shadow-lg"
+              style={{ width: '100%', maxWidth: '420px' }}
+              data-aos="zoom-in"
+            >
+              <h2 className="text-center mb-4 fw-bold">Connexion</h2>
+              <form onSubmit={handleLogin}>
+                <div className="mb-3">
+                  <label className="form-label">Email ou Nom</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={identifiant}
+                    onChange={(e) => setIdentifiant(e.target.value)}
+                    required
+                    placeholder="exemple@email.com ou votre nom"
+                    disabled={loading}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Mot de passe</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    placeholder="********"
+                    disabled={loading}
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary w-100 mt-3" disabled={loading}>
+                  {loading ? 'Connexion...' : 'Se connecter'}
+                </button>
+                <div className="text-center mt-3">
+                  <a href="/register" className="text-decoration-none">Créer un compte</a>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -107,8 +133,14 @@ function Login() {
           background: rgba(255, 255, 255, 0.95);
           border-radius: 1rem;
         }
+
+        @media (max-width: 576px) {
+          .card {
+            margin: 0 1rem;
+          }
+        }
       `}</style>
-    </div>
+    </>
   );
 }
 

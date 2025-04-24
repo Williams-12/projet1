@@ -5,9 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-      <Link className="navbar-brand fw-bold" to="/">
-        📘 StudyZone
-      </Link>
+      <Link to="/" className="logo-link">
+          <img src="./src/assets/brand.png" alt="Logo" className="logo" />
+        </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -34,6 +34,25 @@ function Navbar() {
           </li>
         </ul>
       </div>
+      <style>
+        {`
+         .logo-container {
+          display: flex;
+          align-items: center;
+        }
+
+        .logo-link {
+          text-decoration: none;
+        }
+
+        .logo {
+          height: 50px;
+          object-fit: contain;
+          border-radius: 8px;
+        }
+
+        `}
+      </style>
     </nav>
   );
 }

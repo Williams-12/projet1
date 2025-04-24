@@ -15,8 +15,10 @@ function APropos() {
       <div className="hero-section d-flex align-items-center justify-content-center text-center text-white">
         <div className="overlay"></div>
         <div className="content container" data-aos="zoom-in">
-          <h1 className="display-4 fw-bold">À propos de StudyZone</h1>
-          <p className="lead mt-3">Une plateforme pensée pour booster votre apprentissage au quotidien.</p>
+          <h1 className="titre-a-propos display-3 fw-bold mb-3">
+            <span>À propos de</span> <span className="highlight">StudyZone</span>
+          </h1>
+          <p className="lead mt-2">Une plateforme pensée pour booster votre apprentissage au quotidien.</p>
         </div>
       </div>
 

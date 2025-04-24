@@ -1,9 +1,16 @@
 import './Footer.css';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 function Footer() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
-    <footer className="footer bg-dark text-light pt-5 pb-3 mt-auto">
+    <footer className="footer bg-dark text-light pt-5 pb-3 mt-auto" data-aos="fade-up">
       <div className="container">
         <div className="row justify-content-between">
 
