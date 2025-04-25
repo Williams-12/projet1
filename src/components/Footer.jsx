@@ -24,7 +24,7 @@ function Footer() {
           <div className="col-md-3 mb-4">
             <h5 className="text-light">Navigation</h5>
             <ul className="list-unstyled">
-              <li><a href="/accueil" className="footer-link">Accueil</a></li>
+              <li><a href="/" className="footer-link">Accueil</a></li>
               <li><a href="/bibliotheque" className="footer-link">Bibliothèque</a></li>
               <li><a href="/contact" className="footer-link">Contact</a></li>
               <li><a href="/apropos" className="footer-link">À propos</a></li>
