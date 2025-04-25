@@ -3,6 +3,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   useEffect(() => {
@@ -24,11 +25,11 @@ function Footer() {
           <div className="col-md-3 mb-4">
             <h5 className="text-light">Navigation</h5>
             <ul className="list-unstyled">
-              <li><a href="/" className="footer-link">Accueil</a></li>
-              <li><a href="/bibliotheque" className="footer-link">Bibliothèque</a></li>
-              <li><a href="/contact" className="footer-link">Contact</a></li>
-              <li><a href="/apropos" className="footer-link">À propos</a></li>
-              <li><a href="/politique" className="footer-link">Politique de confidentialité</a></li>
+              <li><Link to="/" className="footer-link">Accueil</Link></li>
+              <li><Link to="/bibliotheque" className="footer-link">Bibliothèque</Link></li>
+              <li><Link to="/contact" className="footer-link">Contact</Link></li>
+              <li><Link to="/apropos" className="footer-link">À propos</Link></li>
+              <li><Link to="/politique" className="footer-link">Politique de confidentialité</Link></li>
             </ul>
           </div>
 
@@ -66,7 +67,6 @@ function Footer() {
         </div>
       </div>
 
-      {/* ==== STYLE INTERNE SUPPLÉMENTAIRE ==== */}
       <style>{`
         .footer-link {
           color: #bbb;
