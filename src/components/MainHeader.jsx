@@ -7,7 +7,7 @@ function MainHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { text: "ACCUEIL", path: "/accueil" },
+    { text: "ACCUEIL", path: "/" },
     { text: "BIBLIOTHEQUE", path: "/bibliotheque" },
     { text: "PROFIL", path: "/profil" },
     { text: "APROPOS", path: "/apropos" },
@@ -49,7 +49,7 @@ function MainHeader() {
             className="logout-btn"
             onClick={() => {
               localStorage.removeItem('token');
-              window.location.href = '/';
+              window.location.href = '/home';
             }}
           >
             LOGIN

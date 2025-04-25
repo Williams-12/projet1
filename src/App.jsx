@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'animate.css';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Accueil from './pages/Accueil';
@@ -16,9 +17,11 @@ function App() {
   return (
     <Router>
       <Routes>
+
+        {/* ✅ Pages avec Layout (NavBar ou MainHeader selon la route) */}
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} /> {/* ✅ Affichage direct de Accueil à / */}
-          <Route path="accueil" element={<Accueil />} /> {/* ✅ Home déplacé vers /auth */}
+          <Route index element={<Accueil />} />
+          <Route path="home" element={<Home />} />
           <Route path="contact" element={<Contact />} />
           <Route path="apropos" element={<APropos />} />
 
@@ -39,12 +42,14 @@ function App() {
             </PrivateRoute>
           } />
 
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Route>
 
-        {/* Auth routes (inchangées) */}
+        {/* Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        
       </Routes>
     </Router>
   );

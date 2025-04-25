@@ -8,7 +8,7 @@ function Layout() {
   const location = useLocation();
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const isHomePage = location.pathname === '/';
+  const isNavBarPage = location.pathname === '/home';
 
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
@@ -25,11 +25,13 @@ function Layout() {
         transition: 'background-color 0.5s ease, color 0.5s ease',
       }}
     >
-      {isHomePage ? <Navbar /> : <MainHeader />}
+      {/* ✅ Header dynamique */}
+      {isNavBarPage ? <Navbar /> : <MainHeader />}
 
       <main className="flex-grow-1">
         <Outlet />
       </main>
+
       <Footer />
 
       {/* 🌙 Thème sombre/clair
@@ -54,7 +56,7 @@ function Layout() {
         title="Changer le thème sombre / clair"
       >
         {isDarkMode ? '☀️' : '🌙'}
-      </div> */}
+      </div>
 
       <style>
         {`
@@ -63,7 +65,7 @@ function Layout() {
             color: #f1f1f1 !important;
           }
         `}
-      </style>
+      </style> */}
     </div>
   );
 }
