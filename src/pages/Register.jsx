@@ -40,7 +40,7 @@ function Register() {
         role: 'eleve',
       });
 
-      setSuccessMessage('✅ Inscription réussie ! Redirection en cours...');
+      setSuccessMessage('Inscription réussie ! Redirection en cours...');
       setLoading(false);
 
       setTimeout(() => {

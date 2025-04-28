@@ -31,7 +31,7 @@ function NotFound() {
       <div>
         <div className="big-404">404</div>
         <div className="error-message">Page introuvable</div>
-        <Link to="/accueil" className="back-home-btn">Retour à l'accueil</Link>
+        <Link to="/" className="back-home-btn">Retour à l'accueil</Link>
       </div>
     </div>
   );
