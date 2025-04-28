@@ -18,7 +18,7 @@ function MainHeader() {
     <nav className="main-header">
       <div className="logo-container">
         <Link to="/" className="logo-link">
-          <img src="./public/logo.png" alt="Logo" className="logo" />
+          <img src="/logo.png" alt="Logo" className="logo" />
         </Link>
 
         <button
