@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
       <Link to="/" className="logo-link">
-          <img src="./src/assets/brand.png" alt="Logo" className="logo" />
+          <img src="/brand.png" alt="Logo" className="logo" />
         </Link>
       <button
         className="navbar-toggler"
